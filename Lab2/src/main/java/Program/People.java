@@ -8,7 +8,7 @@ import java.util.*;
 public class People {
     private List<Person> personList = new ArrayList<>();
     
-    public final List<Person> getPersonList() { return this.personList; }
+    public List<Person> getPersonList() { return this.personList; }
     private void addPerson(Person p) { this.personList.add(p); }
     
     People() {}
@@ -76,7 +76,7 @@ public class People {
         People ppl = new People();
         this.sortBySalary();
         this.reverse();
-        for(final Person p : this.getPersonList())
+        for(Person p : this.getPersonList())
         {
             if(p.getSalary() > salary)
             {
@@ -89,7 +89,7 @@ public class People {
     public double averageSalary()
     {
         double output = 0;
-        for(final Person p : this.getPersonList())
+        for(Person p : this.getPersonList())
         {
             output = output + p.getSalary();
         }
@@ -99,7 +99,7 @@ public class People {
     @Override public String toString()
     {
         String output = "";
-        for(final Person p : this.getPersonList())
+        for(Person p : this.getPersonList())
         {
             output = output + p + "\n";
         }
