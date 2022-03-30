@@ -25,6 +25,11 @@ public class MultiNumbers {
         }
     }
     
+    public MultiNumbers(String filename) throws Exception
+    {
+        this.Load(filename);
+    }
+    
     public void Save(String filename) throws Exception
     {
         Gson gson = new Gson();

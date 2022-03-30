@@ -44,6 +44,11 @@ public class Numbers {
         }
     }
     
+    public Numbers(String filename) throws Exception
+    {
+        this.Load(filename);
+    }
+    
     @Override public String toString()
     {
         String out = "[ ";
