@@ -133,7 +133,7 @@ public class FileDataParser {
             {
                 Person p = Person.FromString(line);
                 this.people.addPerson(p);
-                if(this.people_sub.get(line) == null) { this.people_sub.put(filename, new People()); }
+                if(this.people_sub.get(filename) == null) { this.people_sub.put(filename, new People()); }
                 this.people_sub.get(filename).addPerson(p);
             }
         }
