@@ -18,15 +18,16 @@ public class Lab4 {
         //System.out.println(p.averageSalary());
         //System.out.println(p.oldest());
         p.oldestCSV("o.csv");
+        p.averageSalaryCSV("s.csv");
        
-        /*NumericDataGenerator gen = new NumericDataGenerator("numbers.csv");
-        gen.generate(10000);
-        gen.save();
+        NumericDataGenerator gen1 = new NumericDataGenerator("numbers.csv");
+        gen1.generate(10000);
+        gen1.save();
        
-        NumericDataParser p = new NumericDataParser("numbers.csv");
-        p.load();
-        p.selectPrimes();
-        p.save();
-        System.out.println(p);*/
+        NumericDataParser p1 = new NumericDataParser("numbers.csv");
+        p1.load();
+        p1.selectPrimes();
+        p1.save();
+        System.out.println(p1);
     }
 }

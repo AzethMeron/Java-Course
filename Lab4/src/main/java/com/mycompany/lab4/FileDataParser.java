@@ -101,7 +101,8 @@ public class FileDataParser {
         {
             People local_ppl = this.people_sub.get(filename);
             double average = local_ppl.averageSalary();
-            output = output + String.format("Average salary in %s: %f\n", filename, average);
+            String av = String.format("%f", average).replace(",", ".");
+            output = output + String.format("Average salary in %s: %s\n", filename, av);
         }
         double average = this.people.averageSalary();
         output = output + String.format("Average salary in total: %f\n", average);
@@ -115,7 +116,8 @@ public class FileDataParser {
         {
             People local_ppl = this.people_sub.get(filename);
             double average = local_ppl.averageSalary();
-            output = output + String.format("%s,%f\n", filename, average);
+            String av = String.format("%f", average).replace(",", ".");
+            output = output + String.format("%s,%s\n", filename, av);
         }
         double average = this.people.averageSalary();
         output = output + String.format("total, %f", average);
