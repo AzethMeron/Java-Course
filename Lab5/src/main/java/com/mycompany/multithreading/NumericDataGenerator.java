@@ -35,7 +35,7 @@ class NumericDataParser implements Runnable
         return true;
     }
     
-    public void run() 
+    @Override public void run() 
     {
         ArrayList<Long> primes = new ArrayList<>();
         String data_to_save = new String();
@@ -76,6 +76,11 @@ class NumericDataParser implements Runnable
          t.start ();
       }
    }
+    
+    public void join() throws Exception
+    {
+        t.join();
+    }
 }
 
 public class NumericDataGenerator {
@@ -151,11 +156,15 @@ public class NumericDataGenerator {
         }
     }
     
-    public void start()
+    public void start() throws Exception
     {
         for(NumericDataParser thread : this.threads)
         {
             thread.start();
+        }
+        for(NumericDataParser thread : this.threads)
+        {
+            thread.join();
         }
     }
 }

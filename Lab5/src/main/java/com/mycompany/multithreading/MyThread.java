@@ -22,7 +22,7 @@ class MyThread implements Runnable {
       System.out.println("Creating " + this.threadnum );
    }
    
-   public void run() {
+    @Override public void run() {
       System.out.println("Running " +  this.threadnum );
       try {
          for(int i = 0; i < 5; ++i) {
@@ -44,4 +44,9 @@ class MyThread implements Runnable {
          t.start ();
       }
    }
+   
+   public void join() throws Exception
+    {
+        t.join();
+    }
 }
