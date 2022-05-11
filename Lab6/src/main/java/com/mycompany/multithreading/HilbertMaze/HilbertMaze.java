@@ -83,10 +83,10 @@ public class HilbertMaze {
         HilbertMaze output = new HilbertMaze();
         output._Truncate(n);
         
-        HilbertMaze topleft = Generate(n-1);
+        HilbertMaze topleft = new HilbertMaze(Generate(n-1));
         HilbertMaze topright = new HilbertMaze(topleft);
-        HilbertMaze bottomleft = topleft.Rotate(true);
-        HilbertMaze bottomright = topleft.Rotate(false);
+        HilbertMaze bottomleft = new HilbertMaze(topleft.Rotate(true));
+        HilbertMaze bottomright = new HilbertMaze(topleft.Rotate(false));
         
         output._Paste(0, 0, bottomleft);
         output._Paste(0, _SizeForN(n)/2, bottomright);
@@ -126,29 +126,21 @@ public class HilbertMaze {
         {
             for(Node n : row)
             {
-                char character = n.isPassable() ? ' ' : 'X';
-                output = output + character;
+                output = output + n;
             }
             output = output + "\n";
         }
         return output;
     }
     
-    public String Mark(int row, int col)
+    public void Mark(ArrayList<Point> path, char visual)
     {
-        String output = "";
-        for(int r = 0; r < this.Size(); ++r)
+        for(Point p : path)
         {
-            for(int c = 0; c < this.Size(); ++c)
-            {
-                Node n = this.maze.get(r).get(c);
-                char character = n.isPassable() ? ' ' : 'X';
-                if((r == row) && (c == col) ) character = '+';
-                output = output + character;
-            }
-            output = output + "\n";
+            int row = p.Row();
+            int col = p.Column();
+            this.maze.get(row).get(col).Mark(visual);
         }
-        return output;
     }
     
     public HilbertMaze(HilbertMaze tocopy)
@@ -159,7 +151,8 @@ public class HilbertMaze {
             for(int c = 0; c < tocopy.maze.get(r).size(); ++c)
             {
                 Node obj = tocopy.maze.get(r).get(c);
-                this.maze.get(r).add(obj);
+                Node n = new Node(obj.Weight());
+                this.maze.get(r).add(n);
             }
         }
     }
@@ -189,7 +182,7 @@ public class HilbertMaze {
                 lowest_f.add(p);
             }
             Collections.sort(lowest_f, new Comparator<Point>(){
-                public int compare(Point a, Point b){
+                @Override public int compare(Point a, Point b){
                     return a.GetH() - b.GetH();
                 }
            });
@@ -219,7 +212,6 @@ public class HilbertMaze {
                     {
                         Point p = open_nodes.get(open_nodes.indexOf(neighbour));
                         p.Update(current_node, target_row, target_col);
-                        
                     }
                     else
                     {

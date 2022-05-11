@@ -42,9 +42,14 @@ public class Point implements Comparable<Point> {
     public int Column() { return this.column; }
     public Node Node() { return this.node; }
     
+    public void Mark(char visual)
+    {
+        this.node.Mark(visual);
+    }
+    
     public void Update(Point prev, int target_row, int target_col)
     {
-        if(this.g > prev.h)
+        if(this.previous.g > prev.g)
         {
             this.previous = prev;
             this.g = prev.g + this.node.Weight();

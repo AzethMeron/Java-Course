@@ -10,8 +10,9 @@ package com.mycompany.multithreading.HilbertMaze;
  */
 public class Node {
     private int weight = 0;
+    private char visualisation = ' ';
     
-    public boolean isPassable()
+    public final  boolean isPassable()
     {
         return this.weight != Integer.MAX_VALUE;
     }
@@ -24,10 +25,22 @@ public class Node {
     public Node(boolean passable)
     {
         this.weight = passable ? 1 : Integer.MAX_VALUE;
+        this.visualisation = this.isPassable() ? ' ' : 'X';
     }
     
     public Node(int weight)
     {
         this.weight = weight;
+        this.visualisation = this.isPassable() ? ' ' : 'X';
+    }
+    
+    public void Mark(char visual)
+    {
+        this.visualisation = visual;
+    }
+    
+    @Override public String toString()
+    {
+        return Character.toString(this.visualisation);
     }
 }
