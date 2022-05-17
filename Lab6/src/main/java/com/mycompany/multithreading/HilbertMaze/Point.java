@@ -7,11 +7,7 @@ import java.lang.Math;
 import java.util.ArrayList;
 import java.util.*;
 
-/**
- *
- * @author meron
- */
-public class Point implements Comparable<Point> {
+public class Point {
     final private int row;
     final private int column;
     final private Node node;
@@ -67,11 +63,6 @@ public class Point implements Comparable<Point> {
         }
         Collections.reverse(output);
         return output;
-    }
-    
-    @Override public int compareTo(Point p)
-    {
-        return this.f - p.f;
     }
     
     public int GetF() { return this.f; }

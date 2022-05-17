@@ -173,7 +173,11 @@ public class HilbertMaze {
         while(true)
         {
             if(open_nodes.isEmpty()) break;
-            Collections.sort(open_nodes);
+            Collections.sort(open_nodes, new Comparator<Point>(){
+                @Override public int compare(Point a, Point b){
+                    return a.GetF() - b.GetF();
+                }
+           });
             
             ArrayList<Point> lowest_f = new ArrayList<>();
             for(Point p : open_nodes)

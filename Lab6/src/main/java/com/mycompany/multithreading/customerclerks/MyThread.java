@@ -4,10 +4,6 @@
  */
 package com.mycompany.multithreading.customerclerks;
 
-/**
- *
- * @author meron
- */
 public class MyThread implements Runnable {
     final private Thread t;
     final MyThreadAnchor obj;

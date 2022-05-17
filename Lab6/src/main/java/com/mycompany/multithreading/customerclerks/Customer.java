@@ -5,10 +5,6 @@
 package com.mycompany.multithreading.customerclerks;
 import java.util.Random;
 
-/**
- *
- * @author meron
- */
 class RandomGaussian
 {
     final private double mean;

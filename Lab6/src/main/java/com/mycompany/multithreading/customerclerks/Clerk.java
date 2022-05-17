@@ -5,10 +5,6 @@
 package com.mycompany.multithreading.customerclerks;
 import java.util.concurrent.TimeUnit;
 
-/**
- *
- * @author meron
- */
 public class Clerk extends MyThreadAnchor {
     final private Queue ref_to_queue;
     public Clerk( Queue ref_to_queue) { this.ref_to_queue = ref_to_queue; }

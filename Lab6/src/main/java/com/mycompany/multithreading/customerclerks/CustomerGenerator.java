@@ -6,10 +6,6 @@ package com.mycompany.multithreading.customerclerks;
 import java.lang.Math;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-/**
- *
- * @author meron
- */
 
 class RandomExp
 {
