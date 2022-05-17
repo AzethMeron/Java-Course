@@ -6,8 +6,8 @@
 package com.mycompany.multithreading;
 import com.mycompany.multithreading.HilbertMaze.*;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import com.mycompany.multithreading.customerclerks.*;
+import java.util.concurrent.TimeUnit;
 
 public class Multithreading {
 
@@ -31,18 +31,23 @@ public class Multithreading {
         System.out.println(Accum(path));
     }
     
+    public static void CustomersClerksExample()throws Exception
+    {
+        final int clerk_num = 3;
+        Queue queue = new Queue(10);
+        ArrayList<MyThread> threads = new ArrayList<>();
+        threads.add(new MyThread(new CustomerGenerator(queue)));
+        for(int i = 0; i < clerk_num; ++i) { threads.add(new MyThread(new Clerk(queue))); }
+        while(true)
+        {
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println(queue);
+        }
+    }
+    
     public static void main(String[] args) throws Exception
     {
-        HilbertMazeExample();
-        ArrayList<Integer> p = new ArrayList<>();
-        p.add(2);
-        p.add(-5);
-        p.add(1);
-        Collections.sort(p, new Comparator<Integer>(){
-                @Override public int compare(Integer a, Integer b){
-                    return a - b;
-                }
-           });
-        System.out.println(p);
+        //HilbertMazeExample();
+        CustomersClerksExample();
     }
 }
